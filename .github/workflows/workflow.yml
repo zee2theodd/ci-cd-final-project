@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: CI workflow
 
 on:
@@ -30,3 +31,29 @@ jobs:
       - name: Run unit tests with nose
         run: |
           nosetests -v --with-spec --
+=======
+name: CI workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.9-slim
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: 
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+>>>>>>> b7d4e0f (Add basic CI workflow)
